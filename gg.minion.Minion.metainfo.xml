@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>gg.minion.Minion</id>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>Proprietary</project_license>
+    <name>Minion</name>
+    <summary>Premier AddOn Management</summary>
+    <description>
+        <p>Minion is a multi-platform application which allows users to browse, download, update and manage AddOns for supported games (Elder Scrolls Online and World of Warcraft).</p>
+        <ul>
+            <li>Find new AddOns and install them in a snap!</li>
+            <li>Keep all your AddOns up-to-date automatically.</li>
+            <li>Secure and easy AddOn management.</li>
+            <li>Create snapshots of AddOns and settings.</li>
+        </ul>
+    </description>
+    <screenshots>
+      <screenshot type="default">
+        <image>https://minion.gg/img/screenshot-minion3-pc.png</image>
+      </screenshot>
+    </screenshots>
+	<categories>
+		<category>AudioVideo</category>
+		<category>Audio</category>
+	</categories>
+    <url type="homepage">https://minion.gg/ </url>
+    <url type="bugtracker">https://github.com/alexkay/spek/issues</url>
+    <developer_name>MMOUI</developer_name>
+    <content_rating type="oars-1.1" />
+    <releases>
+        <release version="3.0.5" date="2016-09-08"/>
+    </releases>
+</component>

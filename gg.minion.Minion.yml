@@ -1,0 +1,85 @@
+app-id: gg.minion.Minion
+runtime: org.freedesktop.Platform
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
+command: minion
+default-branch: stable
+cleanup:
+  - /include
+  - /lib/*.a
+  - /lib/*.la
+  - /lib/pkgconfig
+  - /share/man
+finish-args:
+  - --share=ipc
+  - --socket=x11
+#  - --socket=wayland
+  - --share=network
+  - --device=dri
+  - --filesystem=xdg-documents
+  - --filesystem=~/.minion
+  - --filesystem=~/.steam/steam/steamapps/compatdata/306130/pfx/drive_c/users/steamuser/My Documents/Elder Scrolls Online/live/AddOns
+  - --env=PATH=/usr/bin:/app/bin:/app/jdk/bin
+  - --env=JAVA_HOME=/app/jdk
+modules:
+  - name: jdk-fx
+    buildsystem: simple
+    build-commands:
+      - cp -R . /app/jdk
+    cleanup:
+      - /jdk/demo
+      - /jdk/man
+      - /jdk/sample
+      - /jdk/*src.zip
+    sources:
+      - type: archive
+        url: https://cdn.azul.com/zulu/bin/zulu8.62.0.19-ca-fx-jdk8.0.332-linux_x64.tar.gz
+        sha256: 5693c7c26ff20037b1f9a7049de78ab0ccf1fa7c72dea25b7641989d652dd2a8
+
+  - name: minion
+    buildsystem: simple
+    build-commands:
+      # it needs to be done this way because of some weirdness with the zip file
+      - mkdir -p /app/minion/lib
+      - cp -R *.jar /app/minion/lib
+      - mv /app/minion/lib/Minion-jfx.jar /app/minion/
+    sources:
+      - type: archive
+        url: https://cdn.mmoui.com/minion/v3/Minion3.0.5-java.zip
+        sha256: 0098613cce6e3b99decc45e6ecf6b71c4b8eed7fe0cd991611d6df5a7093bc1b
+
+  - name: minion-shortcut
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 launch.sh /app/bin/minion
+      - install -Dm644 gg.minion.Minion.metainfo.xml /app/share/appdata/gg.minion.Minion.metainfo.xml
+      - install -Dm644 gg.minion.Minion.desktop /app/share/applications/gg.minion.Minion.desktop
+      - install -Dm644 minion-32.png /app/share/icons/hicolor/32x32/apps/gg.minion.Minion.png
+      - install -Dm644 minion-64.png /app/share/icons/hicolor/64x64/apps/gg.minion.Minion.png
+      - install -Dm644 minion-128.png /app/share/icons/hicolor/128x128/apps/gg.minion.Minion.png
+      - install -Dm644 minion-256.png /app/share/icons/hicolor/256x256/apps/gg.minion.Minion.png
+      - install -Dm644 minion-512.png /app/share/icons/hicolor/512x512/apps/gg.minion.Minion.png
+    sources:
+      - type: script
+        dest-filename: launch.sh
+        commands:
+          - cd $XDG_DATA_HOME
+          - if test -f "$XDG_DATA_HOME/null/Minion-jfx.jar"; then
+          -   /app/jdk/bin/java -jar $XDG_DATA_HOME/null/Minion-jfx.jar
+          - else
+          -   /app/jdk/bin/java -jar /app/minion/Minion-jfx.jar
+          - fi
+      - type: file
+        path: gg.minion.Minion.metainfo.xml
+      - type: file
+        path: gg.minion.Minion.desktop
+      - type: file
+        path: minion-32.png
+      - type: file
+        path: minion-64.png
+      - type: file
+        path: minion-128.png
+      - type: file
+        path: minion-256.png
+      - type: file
+        path: minion-512.png

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Minion
+Comment=Premier AddOn Management
+Exec=minion
+Icon=gg.minion.Minion
+Terminal=false
