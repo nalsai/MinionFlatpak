@@ -16,9 +16,7 @@ finish-args:
 #  - --socket=wayland
   - --share=network
   - --device=dri
-  - --filesystem=xdg-documents
-  - --filesystem=~/.minion
-  - --filesystem=~/.steam/steam/steamapps/compatdata/306130/pfx/drive_c/users/steamuser/My Documents/Elder Scrolls Online/live/AddOns
+  - --filesystem=home
   - --env=PATH=/usr/bin:/app/bin:/app/jdk/bin
   - --env=JAVA_HOME=/app/jdk
 modules:
