@@ -15,7 +15,7 @@ The config files of minion are located in `~/.minion` because it doesn't respect
 I'm hosting this Flatpak on my own Flatpak Repo. You can install it from there like this:
 
 ```bash
-flatpak install https://flatpak.nils.moe/gg.minion.Minion.flatpakref
+flatpak install https://flatpak.nils.moe/repo/appstream/gg.minion.Minion.flatpakref
 ```
 
 ## Building
