@@ -23,6 +23,7 @@ jobs:
           bundle:  cc.spek.Spek.flatpak
           manifest-path: gg.minion.Minion.yml
           cache-key: flatpak-builder-${{ github.sha }}
+          branch: stable
       - name: Deploy
         uses: bilelmoussaoui/flatpak-github-actions/flat-manager@v3
         with:
