@@ -17,6 +17,7 @@ finish-args:
   - --device=dri
   - --filesystem=~/Documents/Elder Scrolls Online/live/AddOns
   - --filesystem=~/.local/share/Steam/steamapps/compatdata/306130/pfx/drive_c/users/steamuser/Documents/Elder Scrolls Online
+  - --filesystem=~/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/compatdata/306130/pfx/drive_c/users/steamuser/Documents/Elder Scrolls Online
   - --persist=.minion
   - --env=PATH=/usr/bin:/app/bin:/app/jdk/bin
   - --env=JAVA_HOME=/app/jdk
@@ -38,10 +39,8 @@ modules:
   - name: minion
     buildsystem: simple
     build-commands:
-      # it needs to be done this way because of some weirdness with the zip file
-      - mkdir -p /app/minion/lib
-      - cp -R *.jar /app/minion/lib
-      - mv /app/minion/lib/Minion-jfx.jar /app/minion/
+      - mkdir -p /app/minion
+      - cp -R lib Minion-jfx.jar /app/minion/
       - install -Dm755 launch.sh /app/bin/minion
       - install -Dm644 gg.minion.Minion.metainfo.xml /app/share/metainfo/gg.minion.Minion.metainfo.xml
       - install -Dm644 gg.minion.Minion.desktop /app/share/applications/gg.minion.Minion.desktop
@@ -52,8 +51,8 @@ modules:
       - install -Dm644 minion-512.png /app/share/icons/hicolor/512x512/apps/gg.minion.Minion.png
     sources:
       - type: archive
-        url: https://cdn.mmoui.com/minion/v3/Minion3.0.5-java.zip
-        sha256: 0098613cce6e3b99decc45e6ecf6b71c4b8eed7fe0cd991611d6df5a7093bc1b
+        url: https://cdn.mmoui.com/minion/v3/Minion3.0.11-java.zip
+        sha256: 7ed2a5804462b6dec7d0f4f7b1b96b9279b71ed81939ef03f65f28d9e1c72e1e
       - type: script
         dest-filename: launch.sh
         commands:
