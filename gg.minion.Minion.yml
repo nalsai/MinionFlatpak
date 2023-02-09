@@ -13,10 +13,11 @@ cleanup:
 finish-args:
   - --share=ipc
   - --socket=x11
-#  - --socket=wayland
   - --share=network
   - --device=dri
-  - --filesystem=home
+  - --filesystem=~/Documents/Elder Scrolls Online/live/AddOns
+  - --filesystem=~/.local/share/Steam/steamapps/compatdata/306130/pfx/drive_c/users/steamuser/Documents/Elder Scrolls Online
+  - --persist=.minion
   - --env=PATH=/usr/bin:/app/bin:/app/jdk/bin
   - --env=JAVA_HOME=/app/jdk
 modules:
@@ -41,16 +42,8 @@ modules:
       - mkdir -p /app/minion/lib
       - cp -R *.jar /app/minion/lib
       - mv /app/minion/lib/Minion-jfx.jar /app/minion/
-    sources:
-      - type: archive
-        url: https://cdn.mmoui.com/minion/v3/Minion3.0.5-java.zip
-        sha256: 0098613cce6e3b99decc45e6ecf6b71c4b8eed7fe0cd991611d6df5a7093bc1b
-
-  - name: minion-shortcut
-    buildsystem: simple
-    build-commands:
       - install -Dm755 launch.sh /app/bin/minion
-      - install -Dm644 gg.minion.Minion.metainfo.xml /app/share/appdata/gg.minion.Minion.metainfo.xml
+      - install -Dm644 gg.minion.Minion.metainfo.xml /app/share/metainfo/gg.minion.Minion.metainfo.xml
       - install -Dm644 gg.minion.Minion.desktop /app/share/applications/gg.minion.Minion.desktop
       - install -Dm644 minion-32.png /app/share/icons/hicolor/32x32/apps/gg.minion.Minion.png
       - install -Dm644 minion-64.png /app/share/icons/hicolor/64x64/apps/gg.minion.Minion.png
@@ -58,6 +51,9 @@ modules:
       - install -Dm644 minion-256.png /app/share/icons/hicolor/256x256/apps/gg.minion.Minion.png
       - install -Dm644 minion-512.png /app/share/icons/hicolor/512x512/apps/gg.minion.Minion.png
     sources:
+      - type: archive
+        url: https://cdn.mmoui.com/minion/v3/Minion3.0.5-java.zip
+        sha256: 0098613cce6e3b99decc45e6ecf6b71c4b8eed7fe0cd991611d6df5a7093bc1b
       - type: script
         dest-filename: launch.sh
         commands:
