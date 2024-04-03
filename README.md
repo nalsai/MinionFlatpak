@@ -1,5 +1,10 @@
 # Minion Flatpak
 
+> [!CAUTION]
+>
+> Minion is on Flathub (<https://flathub.org/apps/gg.minion.Minion>).  
+> Therefore this repository is no longer maintained.
+
 📦 Flatpak Package of MMOUI Minion for Linux
 
 Minion is a multi-platform application which allows users to browse, download, update and manage AddOns for supported games (Elder Scrolls Online and World of Warcraft).
